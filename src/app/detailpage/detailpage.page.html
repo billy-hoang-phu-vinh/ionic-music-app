@@ -1,10 +1,14 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>detailpage</ion-title>
+    
+    <ion-title>
+      <span>
+        <ion-button (click)=main()>
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </span><br>Detail playlist
+    </ion-title>
   </ion-toolbar>
-  <ion-buttons slot="start">
-    <ion-back-button></ion-back-button>
-  </ion-buttons>
 </ion-header>
 
 <ion-content>

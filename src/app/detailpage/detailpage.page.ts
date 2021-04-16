@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { RecommendArtist } from '../model/RecommendArtist.model';
 import { StorageService } from '../service/storage.service';
 
@@ -12,7 +12,7 @@ export class DetailpagePage implements OnInit {
   getlinks : RecommendArtist[];
   test : RecommendArtist[];
   track : RecommendArtist;
-  constructor(private storgeService: StorageService,private ac: ActivatedRoute,public storge: StorageService) { }
+  constructor(private routes:Router,private storgeService: StorageService,private ac: ActivatedRoute,public storge: StorageService) { }
   detailTrack:RecommendArtist[]
   ngOnInit() {
     console.log(`detail page`)
@@ -26,6 +26,9 @@ export class DetailpagePage implements OnInit {
     console.log(`enter`)
     this.getlinks = this.storge.getAllOpenLink().reverse();
     this.track=this.storgeService.selecttrack
+  }
+  main(){
+    this.routes.navigate(['tabs/tab3'])
   }
 
 

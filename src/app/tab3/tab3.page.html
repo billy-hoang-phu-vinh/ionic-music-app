@@ -7,11 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="medium">Your recent play:</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
   <ion-list style="padding: 10px;">     
 </ion-list>
 
@@ -22,8 +18,8 @@
 
 <ion-list *ngIf="links" >
   <ion-item *ngFor="let sampleItem of links" >
-    <ion-item *ngIf="sampleItem.uri" (click)="select(sampleItem)">
-      <ion-item   >
+    <ion-item *ngIf="sampleItem.uri" >
+      <ion-item (click)="select(sampleItem)"  >
         <ion-img style="height: 100px;width: 100px;" src={{sampleItem.image}}></ion-img>
       </ion-item>
   
