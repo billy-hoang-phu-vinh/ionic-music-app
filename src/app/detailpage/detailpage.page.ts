@@ -12,7 +12,7 @@ export class DetailpagePage implements OnInit {
   getlinks : RecommendArtist[];
   test : RecommendArtist[];
   track : RecommendArtist;
-  constructor(private ac: ActivatedRoute,public storge: StorageService) { }
+  constructor(private storgeService: StorageService,private ac: ActivatedRoute,public storge: StorageService) { }
   detailTrack:RecommendArtist[]
   ngOnInit() {
     console.log(`detail page`)
@@ -25,26 +25,7 @@ export class DetailpagePage implements OnInit {
   ionViewWillEnter(){
     console.log(`enter`)
     this.getlinks = this.storge.getAllOpenLink().reverse();
-    this.ac.paramMap.subscribe(paramMap=>{
-      if(!paramMap.has('uri')){
-        return
-      } else {
-        console.log(`catch uri`)
-        console.log(`show get links`)
-        this.getlinks=this.storge.getAllOpenLink()
-        console.log(this.getlinks)
-
-        //get param value
-        const uri = paramMap.get('uri')
-       console.log(`uri: `+uri)
-        const copy = this.getlinks
-        for (let key in copy ) {
-          console.log(`key`)
-          
-        }
-      
-      }
-    })
+    this.track=this.storgeService.selecttrack
   }
 
 

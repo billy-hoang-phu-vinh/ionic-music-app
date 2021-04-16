@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { RecommendArtist } from '../model/RecommendArtist.model';
 import { StorageService } from '../service/storage.service';
@@ -11,7 +12,7 @@ import { StorageService } from '../service/storage.service';
 export class Tab3Page {
   links : RecommendArtist[];
 
-  constructor(private storgeService: StorageService,private alertController: AlertController) {}
+  constructor(private routes:Router,private storgeService: StorageService,private alertController: AlertController) {}
 
 ngOnInit(){
    this.links = this.storgeService.getAllOpenLink().reverse();
@@ -59,5 +60,9 @@ ngOnInit(){
     }).then(alert => {
       alert.present();
     })
+  }
+  select(t:RecommendArtist){
+    this.storgeService.selectedtrack(t)
+    this.routes.navigate(['tabs/detailpage/t'])
   }
 }

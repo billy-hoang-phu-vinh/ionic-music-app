@@ -9,9 +9,10 @@
 
 <ion-content>
   <ion-item *ngIf="track" >
-      <ion-item >
-        <ion-label>{{track.name}}</ion-label>
-        <ion-img weight="48" height="48" src={{track.image}}></ion-img>
+        <ion-img style="height:200px" src={{track.image}}></ion-img>
+    <ion-item>
+      {{track.name}}
     </ion-item>
+
 </ion-item>
 </ion-content>

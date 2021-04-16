@@ -22,7 +22,7 @@
 
 <ion-list *ngIf="links" >
   <ion-item *ngFor="let sampleItem of links" >
-    <ion-item *ngIf="sampleItem.uri" [routerLink]="['../detailpage',sampleItem.uri]">
+    <ion-item *ngIf="sampleItem.uri" (click)="select(sampleItem)">
       <ion-item   >
         <ion-img style="height: 100px;width: 100px;" src={{sampleItem.image}}></ion-img>
       </ion-item>

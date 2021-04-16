@@ -8,6 +8,7 @@ import { Storage } from '@ionic/storage-angular';
 export class StorageService {
 
   private _storage: Storage | null = null;//create class storate: is empty
+  selecttrack : RecommendArtist
 
   constructor(private storage: Storage) {
     this.init(); //run init
@@ -27,7 +28,12 @@ export class StorageService {
     this._storage?.set(newTask.uri, newTask); //SAVE TO _storate
     this.logAllopenLinks();//show all tasks
   }
-
+  public selectedtrack (track:RecommendArtist) {
+    this.selecttrack=track
+  }
+  public getselectedtrack () {
+    return this.selecttrack
+  }
   private logAllopenLinks(){
     console.log("All open links : ");
     this._storage.forEach((key, value, index) => {
