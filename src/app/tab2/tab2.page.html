@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Music App Api - Recommend
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,27 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Recomend playlist</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-list style="padding: 10px;">
+      <ion-item  button (click)="genre(pop)">
+        <ion-img style="height: 130px;width: 130px;" src="https://i.scdn.co/image/ab67706f00000003bca0c49e8a025998e026e55f"></ion-img>
+      </ion-item>
+      <ion-item button (click)="genre(Piano)">
+        <ion-img style="height: 130px;width: 130px" src="https://i.scdn.co/image/ab67706c0000bebb0852f9a4c56801841ef7659a"></ion-img>
+      </ion-item>
+      <ion-item button (click)="genre(Jazz)">
+        <ion-img style="height: 130px;width: 130px" src="https://i.scdn.co/image/ab67706f000000039df1c7fd48abfc4570cf6e18"></ion-img>
+      </ion-item>
+</ion-list>
+<ion-list *ngIf="resultPlaylist_genre" >
+  <ion-item *ngFor="let sampleItem of resultPlaylist_genre" button (click)="spotify(sampleItem)"  >
+    <ion-item >
+      <ion-img weight="48" height="48" src={{sampleItem.image}}></ion-img>
+    </ion-item>
+    
+  </ion-item>
+</ion-list>
+  
 </ion-content>

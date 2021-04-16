@@ -14,6 +14,7 @@
   </ion-header>
   <ion-img  height="360" src="https://raw.githubusercontent.com/billy-hoang-phu-vinh/xamarin-musicplayer/main/sourcefiles/900x520_piano-min.jpg"></ion-img>
 
+  <ion-label *ngIf="token">Connected to Spotify, API: <br><span style="font-size: 8pt">{{token}}</span></ion-label>
   <form [formGroup]="form" #anyform="ngForm" (ngSubmit)="onSubmit(anyform)">
     <ion-grid>
         <ion-row id="row">
@@ -39,7 +40,7 @@
     </ion-grid>
   </form>
   <ion-list *ngIf="!isLoading && !isSelected" >
-    <ion-item *ngFor="let sampleItem of resultPlaylist" button (click)="spotify(sampleItem.uri)"  >
+    <ion-item *ngFor="let sampleItem of resultPlaylist" button (click)="spotify(sampleItem)"  >
       <ion-item >
         <ion-img weight="48" height="48" src={{sampleItem.image}}></ion-img>
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RecommendArtist } from './RecommendArtist.model';//get model music
+import { RecommendArtist } from '../model/RecommendArtist.model';//get model music
 import { map, sample } from 'rxjs/operators'; 
 
 
@@ -9,7 +9,7 @@ import { map, sample } from 'rxjs/operators';
 })
 export class MusicService {
   val = 'Teacher';
-  url = '';
+  url = 'https://xamarinsupport.herokuapp.com/';
 
 
 constructor(private http:HttpClient) { }
@@ -62,6 +62,7 @@ public recommend_artist: RecommendArtist[] = [
   // pipe();
   
 } 
+
 searchPlaylist(keyword:string){
   this.url = 'https://xamarinsupport.herokuapp.com/search/'+keyword;
   return this.http.get<{result_sample}>(this.url).
@@ -80,6 +81,19 @@ searchPlaylist(keyword:string){
       ) 
        );
   
+}
+getToken(){
+  console.log(`get token`)
+  const token_url=this.url+'token'
+  return this.http.get<{result}>(token_url).
+  pipe(
+    map(dbsampleData => {
+      const dbSkills = [];
+      console.log(dbsampleData.result.token)
+        return dbsampleData.result.token;
+      }
+      ) 
+       );
 }
 /* fetchSkills(value:string){//book com c 
   this.url = 'http://api.dataatwork.org/v1/jobs/autocomplete?begins_with=' + value;

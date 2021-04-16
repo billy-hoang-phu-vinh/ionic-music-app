@@ -11,13 +11,14 @@ import { AppComponent } from './app.component';
 
 //import { InAppBrowser } from '@ionic-native/in-app-browser';
 
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 
 import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, HttpClientModule,IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, HttpClientModule,IonicModule.forRoot(), AppRoutingModule,IonicStorageModule.forRoot()],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   SplashScreen,StatusBar],
   bootstrap: [AppComponent],

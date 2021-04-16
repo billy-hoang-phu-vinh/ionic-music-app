@@ -19,6 +19,16 @@ const routes: Routes = [
         path: 'tab3',
         loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
       },
+
+      {
+        path: 'detailpage',
+        children:[
+          {
+            path:':uri',
+            loadChildren: () => import('../detailpage/detailpage.module').then( m => m.DetailpagePageModule)  
+          }
+        ]
+      },
       {
         path: '',
         redirectTo: '/tabs/tab1',

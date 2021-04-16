@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 
-import { MusicService } from './music.service';
-import { RecommendArtist } from './RecommendArtist.model';
+import { MusicService } from '../service/music.service';
+import { RecommendArtist } from '../model/RecommendArtist.model';
 // import { Item } from '../models/item.model';
 import { AlertController } from '@ionic/angular';
 
 import { Router } from '@angular/router';
 import {NgForm} from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { StorageService } from '../service/storage.service';
 
 //external link
 //import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
@@ -19,7 +20,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class Tab1Page {
   form: FormGroup
-  constructor(private routes:Router,public alertController: AlertController,private musicService: MusicService) {}
+  token: string
+  constructor(private storgeService: StorageService,private routes:Router,public alertController: AlertController,private musicService: MusicService) {}
   isLoading = false;
   sampleArtist : RecommendArtist[];
   resultPlaylist : RecommendArtist[];
@@ -32,6 +34,9 @@ export class Tab1Page {
         validators: [Validators.required]
       })
     });
+    this.musicService.getToken().subscribe((d)=>{
+      this.token=d;
+    })
 
    /* this.musicService.getSample().subscribe(
     (sampleData)=>{
@@ -60,17 +65,26 @@ export class Tab1Page {
     }
     
   }
-  spotify(uri:string){
+  savelinkstoStorage(track:any){
+    var today = new Date();
+    var dd = String(today);
+    this.storgeService.saveHistory(track)
+
+  }
+  spotify(track:any){
+    //save to storage
+    this.savelinkstoStorage(track)
+
     //open
     console.log(`run spotify`)
-    console.log(uri)
+    console.log(track.uri)
     //const browser = this.iab.create('https://ionicframework.com/');
   //   browser.on('loadstop').subscribe(event => {
   //     browser.insertCSS({ code: "body{color: red;" });
   //  });
    
   //  browser.close();
-  window.open(uri, '_system');
+  window.open(track.uri, '_system');
   }
 
 }

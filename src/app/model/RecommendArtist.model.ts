@@ -1,6 +1,5 @@
 export class RecommendArtist{
-    // public suggestion:string;
-    // public title: string;
+
 
     constructor (
         public  id: string,
