@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-item *ngIf="track" >
+  <ion-item *ngIf="track"  (click)=spotify(track)>
         <ion-img style="height:200px" src={{track.image}}></ion-img>
     <ion-item>
       {{track.name}}
