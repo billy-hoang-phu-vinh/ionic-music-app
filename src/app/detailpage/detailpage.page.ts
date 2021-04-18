@@ -30,6 +30,12 @@ export class DetailpagePage implements OnInit {
   main(){
     this.routes.navigate(['tabs/tab3'])
   }
+  spotify(track:any){
 
+    console.log(`run spotify`)
+    console.log(track.uri)
+
+  window.open(track.uri, '_system');
+  }
 
 }
